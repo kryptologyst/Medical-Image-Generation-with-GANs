@@ -1,0 +1,43 @@
+# Evaluation configuration for medical image generation
+
+# Model parameters
+model:
+  checkpoint_path: "checkpoints/final_model.pth"
+  generator_type: "dcgan"
+  discriminator_type: "dcgan"
+  latent_dim: 100
+  img_channels: 1
+  img_size: 256
+  hidden_dim: 64
+
+# Evaluation parameters
+evaluation:
+  num_samples: 1000
+  batch_size: 32
+  metrics:
+    - "fid"
+    - "is"
+    - "lpips"
+    - "ssim"
+    - "mse"
+    - "psnr"
+    - "discriminator_performance"
+
+# Data parameters
+data:
+  synthetic: true
+  num_synthetic_samples: 1000
+  data_dir: null
+  num_workers: 4
+
+# Output parameters
+output:
+  save_dir: "evaluation_results"
+  save_samples: true
+  save_plots: true
+  num_plot_samples: 16
+
+# Device
+device:
+  device: "auto"
+  seed: 42
